@@ -1,6 +1,6 @@
 # Luis Client
 
-luis-client is a client sdk to call Microsfot Luis API even you will be behind a proxy.
+luis-client is a client sdk to call Microsfoft Luis API even you will be behind a proxy.
 
 Luis Client is now able to :
   - Predict an utterance and return the intents and attached entities
@@ -101,6 +101,44 @@ client.createEntity(entityName);
 client.getEntity(entityId);
 client.renameEntity(entityId, entityName);
 client.deleteEntity(entityId);
+```
+
+# Remarks
+if you need to add an utterance to your Luis application, you have to be compliant with this json schema.
+```json
+{
+    "type": "object",
+    "properties": {
+        "text": {
+            "type": "string"
+        },
+        "intentName": {
+            "type": "string"
+        },
+        "entityLabels": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "entityName": {
+                        "type": "string"
+                    },
+                    "startCharIndex": {
+                        "type": "integer"
+                    },
+                    "endCharIndex": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "entityName",
+                    "startCharIndex",
+                    "endCharIndex"
+                ]
+            }
+        }
+    }
+}
 ```
 
 # Sample
