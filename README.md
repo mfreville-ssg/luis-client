@@ -79,28 +79,28 @@ Always return a Promise with custom content following the [LUIS Cognitive Servic
 
 ```javascript
 /********** PREDICT **************/
-client.predict(text);
+await client.predict(text);
 
 /********** TRAIN **************/
-client.startTraining();
-client.getTrainingStatus();
+await client.startTraining();
+await client.getTrainingStatus();
 
 /********** INTENTS *************/
-client.createIntent(intentName);
-client.getIntent(intentId);
-client.renameIntent(intentId, intentName);
-client.deleteIntent(intentId);
+await client.createIntent(intentName);
+await client.getIntent(intentId);
+await client.renameIntent(intentId, intentName);
+await client.deleteIntent(intentId);
 
 /********** UTTERANCES/EXAMPLES/LABELS *************/
-client.createUtterance(parameters);
-client.deleteUtterance(utteranceId);
-client.getUtterances(skip, take);
+await client.createUtterance(parameters);
+await client.deleteUtterance(utteranceId);
+await client.getUtterances(skip, take);
 
 /********** ENTITIES *************/
-client.createEntity(entityName);
-client.getEntity(entityId);
-client.renameEntity(entityId, entityName);
-client.deleteEntity(entityId);
+await client.createEntity(entityName);
+await client.getEntity(entityId);
+await client.renameEntity(entityId, entityName);
+await client.deleteEntity(entityId);
 ```
 
 # Remarks
@@ -150,4 +150,4 @@ If you need more examples, please visits the [luis-connect repository][lcr1]
    [sap1]: <https://www.npmjs.com/package/superagent-proxyt>
    [mlrr1]: <https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions>
    [lcsa1]: <https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f>
-   [lcr1]: <https://github.com/mfreville-ssg/luis-connect>
+   [lcr1]: <https://github.com/mfreville/luis-connect>
