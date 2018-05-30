@@ -1,6 +1,6 @@
 # Luis Client
 
-luis-client is a client sdk to call Microsfoft Luis API even you will be behind a proxy.
+luis-client is a client sdk to call Microsoft Luis API even you are behind a proxy.
 
 Luis Client is now able to :
   - Predict an utterance and return the intents and attached entities
