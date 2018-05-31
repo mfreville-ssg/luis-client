@@ -88,17 +88,20 @@ await client.getTrainingStatus();
 /********** INTENTS *************/
 await client.createIntent(intentName);
 await client.getIntent(intentId);
+await client.getIntents();
 await client.renameIntent(intentId, intentName);
 await client.deleteIntent(intentId);
 
 /********** UTTERANCES/EXAMPLES/LABELS *************/
 await client.createUtterance(parameters);
+await client.createUtterances(parameters);
 await client.deleteUtterance(utteranceId);
 await client.getUtterances(skip, take);
 
 /********** ENTITIES *************/
 await client.createEntity(entityName);
 await client.getEntity(entityId);
+await client.getEntities();
 await client.renameEntity(entityId, entityName);
 await client.deleteEntity(entityId);
 ```
@@ -137,6 +140,51 @@ if you need to add an utterance to your Luis application, you have to be complia
                 ]
             }
         }
+    }
+}
+```
+
+if you need to add several utterances to your Luis application, you have to be compliant with this json schema.
+```json
+{
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "text": {
+                "type": "string"
+            },
+            "intentName": {
+                "type": "string"
+            },
+            "entityLabels": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "entityName": {
+                            "type": "string"
+                        },
+                        "startCharIndex": {
+                            "type": "integer"
+                        },
+                        "endCharIndex": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "entityName",
+                        "startCharIndex",
+                        "endCharIndex"
+                    ]
+                }
+            }
+        },
+        "required": [
+            "text",
+            "intentName",
+            "entityLabels"
+        ]
     }
 }
 ```

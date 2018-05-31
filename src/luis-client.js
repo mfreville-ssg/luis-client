@@ -91,6 +91,13 @@ export default class LUISClient {
     }
 
     /**
+     * Get all intents
+     */
+    getIntents() {
+        return this.http.get(this.LUIS_URL_INTENTS);
+    }
+
+    /**
      * Rename an intent
      * @param intentId
      * @param intentName
@@ -127,6 +134,18 @@ export default class LUISClient {
         return Promise.resolve(null);
     }
 
+    /**
+     * Create batch utterances
+     * @param parameters
+     * @returns {Promise.<null>}
+     */
+    createUtterances(parameters) {
+        if(parameters) {
+            return this.http.post(`${this.LUIS_URL_UTTERANCES}s`)
+                .send(parameters);
+        }
+        return Promise.resolve(null);
+    }
 
     /**
      * Get all utterances of the Luis application
@@ -176,6 +195,13 @@ export default class LUISClient {
             return this.http.get(`${this.LUIS_URL_ENTITIES}/${entityId}`);
         }
         return Promise.resolve(null);
+    }
+
+    /**
+     * Get all the entities
+     */
+    getEntities() {
+        return this.http.get(this.LUIS_URL_ENTITIES);
     }
 
     /**
